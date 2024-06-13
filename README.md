@@ -48,7 +48,17 @@ The cleaning process is divided into 4 main parts:
 
 The first few rows of this cleaned DataFrame is shown below:
 
-'|   OBS |   YEAR |   MONTH | U.S._STATE   | CLIMATE.REGION     |   ANOMALY.LEVEL | CLIMATE.CATEGORY   | CAUSE.CATEGORY     |   OUTAGE.DURATION |   DEMAND.LOSS.MW |   CUSTOMERS.AFFECTED |   TOTAL.PRICE |   TOTAL.CUSTOMERS |   POPULATION |   POPDEN_URBAN |   POPDEN_RURAL | OUTAGE.START        | OUTAGE.RESTORATION   |   OUTAGE.DURATION.HOURS |\n|------:|-------:|--------:|:-------------|:-------------------|----------------:|:-------------------|:-------------------|------------------:|-----------------:|---------------------:|--------------:|------------------:|-------------:|---------------:|---------------:|:--------------------|:---------------------|------------------------:|\n|     1 |   2011 |       7 | Minnesota    | East North Central |            -0.3 | normal             | severe weather     |              3060 |              nan |                70000 |          9.28 |           2595696 |      5348119 |           2279 |           18.2 | 2011-07-01 17:00:00 | 2011-07-03 20:00:00  |              51         |\n|     2 |   2014 |       5 | Minnesota    | East North Central |            -0.1 | normal             | intentional attack |                 1 |              nan |                  nan |          9.28 |           2640737 |      5457125 |           2279 |           18.2 | 2014-05-11 18:38:00 | 2014-05-11 18:39:00  |               0.0166667 |\n|     3 |   2010 |      10 | Minnesota    | East North Central |            -1.5 | cold               | severe weather     |              3000 |              nan |                70000 |          8.15 |           2586905 |      5310903 |           2279 |           18.2 | 2010-10-26 20:00:00 | 2010-10-28 22:00:00  |              50         |\n|     4 |   2012 |       6 | Minnesota    | East North Central |            -0.1 | normal             | severe weather     |              2550 |              nan |                68200 |          9.19 |           2606813 |      5380443 |           2279 |           18.2 | 2012-06-19 04:30:00 | 2012-06-20 23:00:00  |              42.5       |\n|     5 |   2015 |       7 | Minnesota    | East North Central |             1.2 | warm               | severe weather     |              1740 |              250 |               250000 |         10.43 |           2673531 |      5489594 |           2279 |           18.2 | 2015-07-18 02:00:00 | 2015-07-19 07:00:00  |              29         |
+```py
+print(outage.head()[["YEAR", "U.S._STATE", "CLIMATE.REGION", "CAUSE.CATEGORY", "CUSTOMERS.AFFECTED", "OUTAGE.DURATION.HOURS"]].to_markdown(index = False))
+```
+```markdown
+|   YEAR | U.S._STATE   | CLIMATE.REGION     | CAUSE.CATEGORY     |   CUSTOMERS.AFFECTED |   OUTAGE.DURATION.HOURS |
+|-------:|:-------------|:-------------------|:-------------------|---------------------:|------------------------:|
+|   2011 | Minnesota    | East North Central | severe weather     |                70000 |                    51   |
+|   2014 | Minnesota    | East North Central | intentional attack |                  nan |              0.0166667 |
+|   2010 | Minnesota    | East North Central | severe weather     |                70000 |                    50   |
+|   2012 | Minnesota    | East North Central | severe weather     |                68200 |                  42.5   |
+|   2015 | Minnesota    | East North Central | severe weather     |               250000 |                    29   |
 
 
 ### EDA
