@@ -51,7 +51,7 @@ The first few rows of this cleaned DataFrame is shown below:
 ```py
 print(outage.head()[["YEAR", "U.S._STATE", "CLIMATE.REGION", "CAUSE.CATEGORY", "CUSTOMERS.AFFECTED", "OUTAGE.DURATION.HOURS"]].to_markdown(index = False))
 ```
-```markdown
+
 |   YEAR | U.S._STATE   | CLIMATE.REGION     | CAUSE.CATEGORY     |   CUSTOMERS.AFFECTED |   OUTAGE.DURATION.HOURS |
 |-------|-------------|-------------------|-------------------|---------------------|------------------------|
 |   2011 | Minnesota    | East North Central | severe weather     |                70000 |                    51   |
@@ -62,6 +62,15 @@ print(outage.head()[["YEAR", "U.S._STATE", "CLIMATE.REGION", "CAUSE.CATEGORY", "
 
 
 ### EDA
+
+I first create a univariate plot that shows the number of outages between 2000-2016.
+
+<iframe
+  src="assets/html.plot1.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 
 
