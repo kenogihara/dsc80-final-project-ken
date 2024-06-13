@@ -139,3 +139,87 @@ I created another pivot table that shows the number of outages per cause categor
 |                 5 |                     2 |                 64 |         1 |             1 |             10 |                              9 |
 |                21 |                    17 |                 31 |        28 |             9 |             70 |                             41 |
 |                 1 |                     1 |                  4 |         5 |             2 |              4 |                            nan |
+
+## Assessment of Missingness
+
+### NMAR Analysis
+
+DEMAND.LOSS.MW is most likely NMAR because it measures the total
+amount of electricity that was lost during the outage, which is somethingthat may not be possible to calculate 100% of the time. This means that the data was not even collected in the first place, implying that the missingness depends on the missing value itself.
+
+There isn't really additional data that we can obtain from this scenario because lost energy is lost. In the hypothetical scenario where we can figure out the values for the missingness it will become MAR. We can make a prediction that the missingness depends on TOTAL.CUSTOMERS. Perhaps, companies that have more customers have more profit which means they can make better investments into monitoring technology.
+
+### Cause Category and Outage Duration
+
+I am going to check if the missing values in the OUTAGE.DURATION.HOURS column is dependent on CAUSE.CATEGORY. However, I must first establish the null and alternative hypotheses.
+
+**Null Hypothesis:** The distribution of CAUSE.CATEGORY is similar when OUTAGE.DURATION.HOURS is missing and when it is not missing.
+
+**Alternative Hypothesis:** The distributions are not similar and  the missingness of the OUTAGE.DURATION.HOURS column is indeed dependent on CAUSE.CATEGORY.
+
+I created a pivot table to compute the observed test statistic (Total variation distance), then ran a permutation test on the CAUSE.CATEGORY column to compute the p-value.
+
+<iframe
+  src="assets/html.plot6.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+According to the figure, we can see that the observed test statistic is way off the permutated values. This is evidence that the alternative hypothesis is true, and that the missingness of the OUTAGE.DURATION.HOURS column is dependent on CAUSE.CATEGORY. Therefore, we will reject the null hypothesis.
+
+## Hypothesis Testing
+
+Previously, I showed that outages caused by fuel supply emergencies are longer on average than outages caused by severe weather. We will test if this is true by implementing a permutation test again.
+
+**Null Hypothesis:** There is no relationship between the two events. The differences are due to random chance.
+
+**Alternative hypothesis:** Outages caused by fuel supply emergency are indeed worse on average than outages caused by severe weather. The differences are not due to random chance and the data from each case comes from different data generating processes.
+
+<iframe
+  src="assets/html.plot7.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+I calculated a p-value of 0.0. Therefore, we reject the null hypothesis. We can conclude that there is enough evidence that shows that outages caused by fuel supply emergency are indeed worse (longer) on average than outages caused by severe weather.
+
+## Framing a Prediction Problem
+
+Let's recall our research question.
+
+**Question:** "What risk factors should an energy company want to look into when predicting the location and severity of its next major power outage?"
+
+The distribution in my EDA analysis showed that 'severe weather' and 'intentional attack' were the two most common causes of power outages. This means that the probabilitiy of the next outage being caused by one of those two factors is relatively high.
+
+I will use decision tree classification to predict whether an outage was caused by severe weather or an intentional attack. Since we resticted the response variables to two outcomes, our predictive analysis is an example of binary classification.
+
+I will use F-1 score to determine the model's accuracy because this is an imbalanced classification problem. There are 750 cases that were caused by severe weather and 418 cases that were caused by intentional attacks. F-1 score's ability to handle imbalanced data sets justifies its use.
+
+
+## Baseline Model
+
+### Features 
+
+I used four numerical features for the baseline model: ANOMALY.LEVEL and POPDEN_RURAL. Anomaly level is a metric used by the Oceanic Niño Index (ONI) used for identifying cool and warm seasons in the tropical Pacific. Anomaly levels indicate unusual conditions that may lead to particular outages. POPDEN_RURAL measures how densely popualated each rural area is (persons/square miles). Population density in rural areas could influence the likelihood of particular types of outages. For example, rural areas are high-risk areas that are signifcantly more vulnerable to severe weather changes.
+
+### Baseline Model Performance
+
+Here are the baseline model performance metrics:
+
+|               | Baseline Model |
+|               |--------------- |
+| Training score| 0.915525 |
+| Testing score | 0.815068 |
+| F1 score | 0.860825 |
+
+Our testing and F-1 score are pretty high at 82% and 86% respectively. However, since these are the results of the baseline model, we cannot determine how "good" it is unless we have another model to compare it to.
+
+## Final Model
+
+
+
+
+
+
