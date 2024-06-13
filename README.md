@@ -53,7 +53,7 @@ print(outage.head()[["YEAR", "U.S._STATE", "CLIMATE.REGION", "CAUSE.CATEGORY", "
 ```
 ```markdown
 |   YEAR | U.S._STATE   | CLIMATE.REGION     | CAUSE.CATEGORY     |   CUSTOMERS.AFFECTED |   OUTAGE.DURATION.HOURS |
-|-------:|:-------------|:-------------------|:-------------------|---------------------:|------------------------:|
+|-------|-------------|-------------------|-------------------|---------------------|------------------------|
 |   2011 | Minnesota    | East North Central | severe weather     |                70000 |                    51   |
 |   2014 | Minnesota    | East North Central | intentional attack |                  nan |              0.0166667 |
 |   2010 | Minnesota    | East North Central | severe weather     |                70000 |                    50   |
