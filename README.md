@@ -48,8 +48,9 @@ The cleaning process is divided into 4 main parts:
 
 The first few rows of this cleaned DataFrame is shown below:
 
+```py
 print(outage.head().to_markdown(index = False))
-
+```
 
 ### EDA
 
