@@ -204,15 +204,15 @@ I will use F-1 score to determine the model's accuracy because this is an imbala
 
 I used four numerical features for the baseline model: ANOMALY.LEVEL and POPDEN_RURAL. Anomaly level is a metric used by the Oceanic Niño Index (ONI) used for identifying cool and warm seasons in the tropical Pacific. Anomaly levels indicate unusual conditions that may lead to particular outages. POPDEN_RURAL measures how densely popualated each rural area is (persons/square miles). Population density in rural areas could influence the likelihood of particular types of outages. For example, rural areas are high-risk areas that are signifcantly more vulnerable to severe weather changes.
 
-### Baseline Model Performance
+### Baseline Model Performance Metrics
 
-Here are the baseline model performance metrics:
+Here are the performance metrics for the baseline model:
 
-|               | Baseline Model |
-|               |--------------- |
-| Training score| 0.915525 |
-| Testing score | 0.815068 |
-| F1 score | 0.860825 |
+|                |   Baseline Model |
+|:---------------|-----------------:|
+| Training score |         0.915525 |
+| Testing score  |         0.815068 |
+| F1 score       |         0.860825 |
 
 Our testing and F-1 score are pretty high at 82% and 86% respectively. However, since these are the results of the baseline model, we cannot determine how "good" it is unless we have another model to compare it to.
 
