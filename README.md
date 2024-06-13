@@ -73,5 +73,20 @@ I first create a univariate plot that shows the number of outages between 2000-2
 ></iframe>
 
 
+My second univariate plot shows the distribution of the average power outage time in hours for each cause category.
 
+<iframe
+  src="assets/html.plot2.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
+My third univariate plot shows the distribution of outages for each cause category.
+
+<iframe
+  src="assets/html.plot3.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
