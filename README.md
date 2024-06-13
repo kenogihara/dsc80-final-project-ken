@@ -218,8 +218,65 @@ Our testing and F-1 score are pretty high at 82% and 86% respectively. However, 
 
 ## Final Model
 
+In my final model, I included three more features: POPDEN_URBAN, CLIMATE.CATEGORY, and YEAR. 
+
+**POPDEN_URBAN:** Urban areas tend to have higher population densities, which can make them more attractive targets for intentional attacks. A larger concentraion of people and economic activitiy generally means that disruptions to the power supply can have significant impact.
+
+**CLIMATE.CATEGORY:** Different climate categories (such as cold, warm, or normal) gives insight into weather conditions like storms, hurricanes, or extreme temperatures which often results in power disruptions.
+
+**YEAR:** The year in which an outage occurs can capture trends and changes in infrastructure, technology, and laws, which may have a direct correlation with the freqency of outages causes.
+
+I performed log transformation using FunctionTransformer on POPDEN_URBAN because its data is highly skewed. It's appropriate to manipulate this column before fitting the model. Next, I one-hot-encoded the CLIMATE.CATEGORY column since it's a categorical variable. I used GridSearchCV, a dictionary of hyperparameters, and k-fold cross validation of 5 to determine the best combiation of parameters.
+
+### Model Performance Comparison
+
+Here is a comparison of the performance metrics between the baseline model and the final model:
+
+|                |   Baseline Model |   Final Model |
+|:---------------|-----------------:|--------------:|
+| Training score |         0.915525 |      0.964853 |
+| Testing score  |         0.815068 |      0.874576 |
+| F1 score       |         0.860825 |      0.902375 |
+
+We can see that the model has improved in every aspect. However, we must perform a fairness analysis to determine if the model is fair for particular groups. 
+
+## Fairness Analysis
+
+My fairness analysis includes a permutation test that will determine the model's accuracy performance for two groups: states with an urban population density that's less than 2461 and states with an urban population density that's more than 2461. 
+
+### Density Prediction Results
+
+Here are the prediction results based on density classification:
+
+| is_dense   |   Prediction |
+|:-----------|-------------:|
+| dense      |     0.548387 |
+| not dense  |     0.673267 |
 
 
+This is showing us that among densly urbanly populated states, 54% of cases were caused by severe weather. Meanwhile, 67% of cases among not densly urbanly populated states are attributed to severe weather.
+
+### Density Classification F1 Accuracy
+
+Here are the F1 accuracy scores based on density classification:
+
+| is_dense   |   f1_accuracy |
+|:-----------|--------------:|
+| dense      |      0.899471 |
+| not dense  |      0.899471 |
 
 
+We will run a permutation test to determine if the difference in f1_score is statistically significant between densly and not densly urbanly populated states.
 
+**Null Hypothesis:** The classifier's F-1 is the same for both groups, and the differences are simply due to random chance.
+
+**Alternative Hypothesis:** The classifier's F-1 is the same for both groups, and the differences are not due to random chance.
+
+<iframe
+  src="assets/html.plot8.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+Our p-value of 1 suggests that we will fail to reject the null hypothesis regardless of the signficance level. 
