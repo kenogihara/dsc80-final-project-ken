@@ -193,9 +193,9 @@ Let's recall our research question.
 
 The distribution in my EDA analysis showed that 'severe weather' and 'intentional attack' were the two most common causes of power outages. This means that the probabilitiy of the next outage being caused by one of those two factors is relatively high.
 
-I will use decision tree classification to predict whether an outage was caused by severe weather or an intentional attack. Since we resticted the response variables to two outcomes, our predictive analysis is an example of **binary classification.**
+I used decision tree classification to predict whether an outage was caused by severe weather or an intentional attack. Since we resticted the response variables to two outcomes, our predictive analysis is an example of **binary classification.**
 
-I will use F-1 score to determine the model's accuracy because this is an imbalanced classification problem. There are 750 cases that were caused by severe weather and 418 cases that were caused by intentional attacks. F-1 score's ability to handle imbalanced data sets justifies its use.
+I used F-1 score to determine the model's accuracy because this is an imbalanced classification problem. There are 750 cases that were caused by severe weather and 418 cases that were caused by intentional attacks. F-1 score's ability to handle imbalanced data sets justifies its use.
 
 
 ## Baseline Model
@@ -279,5 +279,4 @@ I ran a permutation test to determine if the difference in F-1 score is statisti
   frameborder="0"
 ></iframe>
 
-Our p-value of 1 suggests that we will fail to reject the null hypothesis regardless of the signficance level. 
-this needs to change
+Our p-value of 1 suggests that we will fail to reject the null hypothesis regardless of the signficance level.
