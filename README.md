@@ -178,7 +178,7 @@ Previously, I showed that outages caused by fuel supply emergencies are longer o
 
 <iframe
   src="assets/html.plot7.html"
-  width="900"
+  width="1000"
   height="400"
   frameborder="0"
 ></iframe>
