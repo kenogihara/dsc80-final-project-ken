@@ -162,7 +162,7 @@ I created a pivot table to compute the observed test statistic (Total variation 
 <iframe
   src="assets/html.plot6.html"
   width="800"
-  height="600"
+  height="450"
   frameborder="0"
 ></iframe>
 
