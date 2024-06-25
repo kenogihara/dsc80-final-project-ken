@@ -4,9 +4,9 @@ Project for DSC 80 at UC San Diego
 By Ken Ogihara
 
 ## Introduction
-In this project, I analyze a dataset that includes major power outages across the U.S from 2000-2016. This dataset is from Purdue University's Laboratory for Advancing Sustainable Critical Infrastructure. This data contains information on the geographical location of the outages, climactic data, and electricity consumption patterns and economic characteristics of the states affected by the outages. 
+In this project, I analyze a dataset that includes major power outages across the U.S from 2000-2016. This dataset is from Purdue University's Laboratory for Advancing Sustainable Critical Infrastructure. This dataset contains information on the geographical location of the outages, climactic data, and electricity consumption patterns and economic characteristics of the states affected by the outages. 
 
-This project revolves around one question: "What risk factors should an energy company want to look into when predicting the location and severity of its next major power outage?" To answer this question, I will first perform basic exploratory data analysis, assess missingness dependency, and finally build a model that predicts whether a power outage is caused by the weather or an intentional attack. This is important for the Department of Education and private energy companies to know because it allows them to take specific measures to prevent the onset of the next power outage. This dataset contains 1534 rows and 57 columns but for the sake of this project I will focus on the following columns:
+This project revolves around one question: "What risk factors should an energy company want to look into when predicting the location and severity of its next major power outage?" To answer this question, I will first perform basic exploratory data analysis, assess missingness dependency, and finally build a model that predicts whether a power outage is caused by the weather or an intentional attack. This is important for the Department of Education and private energy companies because it allows them to take specific measures to prevent the onset of the next power outage. This dataset contains 1534 rows and 57 columns but for the sake of this project I will focus on the following columns:
 
 | Column | Description |
 | ----------- | ----------- |
@@ -38,7 +38,7 @@ This project revolves around one question: "What risk factors should an energy c
 
 The cleaning process is divided into 4 main parts:
 
-1. **Removing irrelevant columns** I kept only the columns that are relevant to the question at hand. These are the columns I am working with: OBS, YEAR, MONTH, U.S._STATE, CLIMATE.REGION, ANOMALY.LEVEL, CLIMATE.CATEGORY, OUTAGE.DURATION, OUTAGE.START.DATE, OUTAGE.START.TIME, OUTAGE.RESTORATION.DATE, OUTAGE.RESORATION.TIME, CAUSE.CATEGORY, CUSTOMERS.AFFECTED, TOTAL.PRICE, TOTAL.CUSTOMERS, POPULATION POPDEN_URBAN, POPDEN_RURAL.
+1. **Removing irrelevant columns** I will keep only the columns that are relevant to the question at hand. These are the columns I will work with: OBS, YEAR, MONTH, U.S._STATE, CLIMATE.REGION, ANOMALY.LEVEL, CLIMATE.CATEGORY, OUTAGE.DURATION, OUTAGE.START.DATE, OUTAGE.START.TIME, OUTAGE.RESTORATION.DATE, OUTAGE.RESORATION.TIME, CAUSE.CATEGORY, CUSTOMERS.AFFECTED, TOTAL.PRICE, TOTAL.CUSTOMERS, POPULATION POPDEN_URBAN, POPDEN_RURAL.
 
 2. **Combining columns** I combined OUTAGE.START.DATE and OUTAGE.START.TIME into a pd.Timestamp column called OUTAGE.START. Similarly, I combined OUTAGE.RESTORATION.DATE and OUTAGE.RESTORATION.TIME into a pd.Timestamp column called OUTAGE.RESTORATION. 
 
@@ -63,7 +63,7 @@ print(outage.head()[["YEAR", "U.S._STATE", "CLIMATE.REGION", "CAUSE.CATEGORY", "
 
 ### EDA
 
-I first create a univariate plot that shows the number of outages between 2000-2016.
+I first created a univariate plot that shows the number of outages between 2000 and 2016.
 
 <iframe
   src="assets/html.plot1.html"
@@ -78,7 +78,7 @@ My second univariate plot shows the distribution of the average power outage tim
 <iframe
   src="assets/html.plot2.html"
   width="800"
-  height="600"
+  height="500"
   frameborder="0"
 ></iframe>
 
@@ -87,7 +87,7 @@ My third univariate plot shows the distribution of outages for each cause catego
 <iframe
   src="assets/html.plot3.html"
   width="800"
-  height="600"
+  height="500"
   frameborder="0"
 ></iframe>
 
@@ -96,7 +96,7 @@ My first bivariate plot shows the association between customers affected and out
 <iframe
   src="assets/html.plot4.html"
   width="800"
-  height="600"
+  height="500"
   frameborder="0"
 ></iframe>
 
@@ -105,7 +105,7 @@ My second bivariate plot shows the distribution of outage duration for each caus
 <iframe
   src="assets/html.plot5.html"
   width="800"
-  height="600"
+  height="500"
   frameborder="0"
 ></iframe>
 
@@ -145,9 +145,9 @@ I created another pivot table that shows the number of outages per cause categor
 ### NMAR Analysis
 
 DEMAND.LOSS.MW is most likely NMAR because it measures the total
-amount of electricity that was lost during the outage, which is somethingthat may not be possible to calculate 100% of the time. This means that the data was not even collected in the first place, implying that the missingness depends on the missing value itself.
+amount of electricity that was lost during the outage, which is a quantity that you may not be able to calculate 100% of the time. This means that the data was not even collected in the first place, implying that the missingness depends on the missing value itself.
 
-There isn't really additional data that we can obtain from this scenario because lost energy is lost. In the hypothetical scenario where we can figure out the values for the missingness it will become MAR. We can make a prediction that the missingness depends on TOTAL.CUSTOMERS. Perhaps, companies that have more customers have more profit which means they can make better investments into monitoring technology.
+There isn't really additional data that we can obtain from this scenario because lost energy is lost. The values will become MAR in the hypothetical scenario where we can figure out the values for the missingness. We can make a prediction that the missingness depends on TOTAL.CUSTOMERS. Perhaps, companies that have more customers have more profit which means they can make better investments into monitoring technology.
 
 ### Cause Category and Outage Duration
 
