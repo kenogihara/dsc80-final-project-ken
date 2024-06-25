@@ -68,7 +68,7 @@ I first created a univariate plot that shows the number of outages between 2000 
 <iframe
   src="assets/html.plot1.html"
   width="800"
-  height="600"
+  height="400"
   frameborder="0"
 ></iframe>
 
@@ -78,7 +78,7 @@ My second univariate plot shows the distribution of the average power outage tim
 <iframe
   src="assets/html.plot2.html"
   width="800"
-  height="500"
+  height="400"
   frameborder="0"
 ></iframe>
 
@@ -87,7 +87,7 @@ My third univariate plot shows the distribution of outages for each cause catego
 <iframe
   src="assets/html.plot3.html"
   width="800"
-  height="500"
+  height="400"
   frameborder="0"
 ></iframe>
 
@@ -96,7 +96,7 @@ My first bivariate plot shows the association between customers affected and out
 <iframe
   src="assets/html.plot4.html"
   width="800"
-  height="500"
+  height="400"
   frameborder="0"
 ></iframe>
 
@@ -105,7 +105,7 @@ My second bivariate plot shows the distribution of outage duration for each caus
 <iframe
   src="assets/html.plot5.html"
   width="800"
-  height="500"
+  height="400"
   frameborder="0"
 ></iframe>
 
@@ -178,8 +178,8 @@ Previously, I showed that outages caused by fuel supply emergencies are longer o
 
 <iframe
   src="assets/html.plot7.html"
-  width="800"
-  height="600"
+  width="900"
+  height="400"
   frameborder="0"
 ></iframe>
 
